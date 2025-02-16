@@ -1,6 +1,9 @@
 import net.jqwik.api.*;
 import static org.assertj.core.api.Assertions.*;
 import net.jqwik.api.constraints.Positive;
+import static org.mockito.Mockito.*;
+
+import org.junit.jupiter.api.Test;
 
 class CalculoIMCTest {
 
@@ -54,4 +57,21 @@ class IMCExtremoTest {
       assertThat(imc).isGreaterThan(1000);
     }
   }
+}
+
+class IMCServiceTest {
+
+    @Test
+    void testCalculoIMCComMock() {
+        // Create a mock of IMCService
+        IMCService imcService = mock(IMCService.class);
+        // Configure the mock to return 24.69 when called with 80kg and 1.80m
+        when(imcService.calcularIMC(80, 1.80)).thenReturn(24.69);
+
+        double imc = imcService.calcularIMC(80, 1.80);
+        assertThat(imc).isEqualTo(24.69);
+
+        // Verify the method was called with the expected parameters
+        verify(imcService).calcularIMC(80, 1.80);
+    }
 }
