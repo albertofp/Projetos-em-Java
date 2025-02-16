@@ -75,3 +75,31 @@ class IMCServiceTest {
         verify(imcService).calcularIMC(80, 1.80);
     }
 }
+
+class IMCExampleTests {
+
+    @Example
+    void healthyIMC() {
+        double imc = CalculoIMC.calcularPeso(70, 1.75);
+        assertThat(imc).isCloseTo(22.86, within(0.01));
+        String classification = CalculoIMC.classificarIMC(imc);
+        assertThat(classification).isEqualTo("Saudável");
+    }
+
+    @Example
+    void overweightIMC() {
+        double imc = CalculoIMC.calcularPeso(90, 1.70);
+        assertThat(imc).isCloseTo(31.14, within(0.01));
+        String classification = CalculoIMC.classificarIMC(imc);
+        assertThat(classification).isEqualTo("Obesidade Grau I");
+    }
+
+    @Example
+    void underweightIMC() {
+        double imc = CalculoIMC.calcularPeso(45, 1.60);
+        assertThat(imc).isCloseTo(17.58, within(0.01));
+        String classification = CalculoIMC.classificarIMC(imc);
+        assertThat(classification).isEqualTo("Magreza leve");
+    }
+}
+
