@@ -1,4 +1,10 @@
 .idea
+.gradle
+.classpath
+.project
+.jqwik-database
+build/
+.settings/
 *.iml
 out
 **/*.class
