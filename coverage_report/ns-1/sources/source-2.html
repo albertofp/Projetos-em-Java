@@ -1,0 +1,149 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > CalculoIMCTest</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">&lt;empty package name&gt;</a>
+</div>
+
+<h1>Coverage Summary for Class: CalculoIMCTest (&lt;empty package name&gt;)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CalculoIMCTest</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (4/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (16/16)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;import static org.junit.Assert.*;
+&nbsp;import java.util.Arrays;
+&nbsp;import java.util.Collection;
+&nbsp;import org.junit.Test;
+&nbsp;import org.junit.runner.RunWith;
+&nbsp;import org.junit.runners.Parameterized;
+&nbsp;
+&nbsp;@RunWith(Parameterized.class)
+&nbsp;public class CalculoIMCTest {
+&nbsp;    private final double peso;
+&nbsp;    private final double altura;
+&nbsp;    private final double expectedIMC;
+&nbsp;    private final String expectedClassificacao;
+&nbsp;
+<b class="fc">&nbsp;    public CalculoIMCTest(double peso, double altura, double expectedIMC, String expectedClassificacao) {</b>
+<b class="fc">&nbsp;        this.peso = peso;</b>
+<b class="fc">&nbsp;        this.altura = altura;</b>
+<b class="fc">&nbsp;        this.expectedIMC = expectedIMC;</b>
+<b class="fc">&nbsp;        this.expectedClassificacao = expectedClassificacao;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Parameterized.Parameters
+&nbsp;    public static Collection&lt;Object[]&gt; data() {
+<b class="fc">&nbsp;        return Arrays.asList(new Object[][]{</b>
+<b class="fc">&nbsp;                {0.0, 1.75, 0.0, &quot;Magreza grave&quot;},</b>
+<b class="fc">&nbsp;                {500.0, 1.75, 163.27, &quot;Obesidade Grau III&quot;},</b>
+<b class="fc">&nbsp;                {70.0, 0.5, 280.0, &quot;Obesidade Grau III&quot;},</b>
+<b class="fc">&nbsp;                {70.0, 3.5, 5.71, &quot;Magreza grave&quot;},</b>
+<b class="fc">&nbsp;                {70.0, 1.75, 22.86, &quot;Saudável&quot;},</b>
+<b class="fc">&nbsp;                {70.0, 0.0, Double.POSITIVE_INFINITY, &quot;Obesidade Grau III&quot;}</b>
+&nbsp;        });
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testCalcularIMC() {
+<b class="fc">&nbsp;        double imc = CalculoIMC.calcularPeso(peso, altura);</b>
+<b class="fc">&nbsp;        assertEquals(expectedIMC, imc, 0.01);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testClassificarIMC() {
+<b class="fc">&nbsp;        String classificacao = CalculoIMC.classificarIMC(expectedIMC);</b>
+<b class="fc">&nbsp;        assertEquals(expectedClassificacao, classificacao);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-02-11 16:45</div>
+</div>
+</body>
+</html>

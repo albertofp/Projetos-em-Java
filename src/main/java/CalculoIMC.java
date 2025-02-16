@@ -70,6 +70,9 @@ class CalculoIMC {
 		
 		System.out.print("Insira o sua altura em metros: ");
 		altura = Double.parseDouble(aScan.nextLine());
+
+		aScan.close();
+    	pScan.close();
 		
 		imc = calcularPeso(peso, altura);
 		
